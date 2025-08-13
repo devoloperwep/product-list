@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import React, { useState } from "react";
+import "./App.css";
+import "./index.css";
+import { useContext } from "react";
+import Card from "./components/Card";
+import { ContextProvider } from "./context/MainContext";
 function App() {
-  const [count, setCount] = useState(0)
-
+  const { data, isPanding, error } = useContext(ContextProvider);
+  const [cards, setCards] = useState([]);
+  if (isPanding) {
+    return <p>Loading...</p>;
+  }
+  if (error) {
+    return <h1>{error}</h1>;
+  }
+  console.log(cards);
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <main className="main">
+      <section className="desserts">
+        <h2 className="desserts__title">Desserts</h2>
+        <div className="cards">
+          {data &&
+            data.data.map((item) => {
+              return (
+                <Card
+                  cards={cards}
+                  item={item}
+                  setCards={setCards}
+                  image={item.image.thumbnail}
+                  name={item.name}
+                  category={item.category}
+                  price={item.price}
+                />
+              );
+            })}
+        </div>
+      </section>
+      <section className="shop">
+        <div className="cart">
+          <h2 className="cart__title">Your Cart (0)</h2>
+
+          <div className="card__info">
+            <img
+              src="./public/images/illustration-empty-cart.svg"
+              alt=""
+              width={125}
+              height={100}
+            />
+            <p>Your added items will appear here</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }
 
-export default App
+export default App;

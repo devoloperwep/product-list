@@ -1,42 +1,121 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+main {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  margin-top: 2rem;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.desserts {
+  width: 100%;
+  max-width: 1100px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.desserts__title {
+  color: #260f08;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.cards {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .card {
-  padding: 2em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.card img {
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.card button {
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
+  border: 1px solid #ad8a85;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: -35px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #260f08;
+  background-color: #ffffff;
+  border: 1px solid var(--color-rose-400, #ad8a85);
+  cursor: pointer;
+}
+.card button:active {
+  opacity: 0.8;
+}
+.card button img {
+  height: 20px;
+  margin-bottom: 0.2rem;
+}
+.card__category {
+  margin-top: 1rem;
+  color: #87635a;
+}
+.card h4 {
+  color: #260f08;
+  font-weight: 600;
+}
+.card__price {
+  color: #c73b0f;
+  font-weight: 600;
 }
 
-.read-the-docs {
-  color: #888;
+.shop {
+  flex: 1;
+}
+
+.cart {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+}
+
+.cart__title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  color: #c73b0f;
+  align-self: flex-start;
+}
+
+.card__info {
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.card__info img {
+  margin-bottom: 0.8rem;
+  opacity: 0.8;
+  max-width: 100%;
+  height: auto;
+}
+@media screen and (max-width: 1000px) {
+  main {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 900px) {
+  .shop {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .cart {
+    width: 100%;
+  }
 }
